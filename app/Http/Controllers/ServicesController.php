@@ -33,7 +33,7 @@ class ServicesController extends Controller
         $img_name = $name_gen.'.'.$img_ext;
         $service = new Services;
         $service->service_name = $request->service_name;
-        $service->service_image = $img_ext;
+        $service->service_image = $img_name;
         $service->save();
 
         $upload_location = 'image/services/';
