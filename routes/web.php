@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ServicesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified'])
 });
 
 
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified'])->group(function () {
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified'])->group(function (){
 
     Route::get('/department/all',[DepartmentController::class,'index'])->name('department');
     Route::post('/department/add',[DepartmentController::class,'store'])->name('addDepartment');
@@ -36,5 +38,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified'])
     Route::get('/department/softdelete/{id}',[DepartmentController::class,'softdelete']);
     Route::get('/department/restore/{id}',[DepartmentController::class,'restore']);
     Route::get('/department/harddelete/{id}',[DepartmentController::class,'harddelete']);
+    Route::get('/services/all',[ServicesController::class,'index'])->name('service');
+    Route::post('/services/add',[ServicesController::class,'add'])->name('addService');
 });
 
