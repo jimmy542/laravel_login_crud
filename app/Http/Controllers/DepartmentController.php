@@ -7,6 +7,7 @@ use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
 class DepartmentController extends Controller
 {
     public function index(){

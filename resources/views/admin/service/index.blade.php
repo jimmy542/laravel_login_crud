@@ -35,7 +35,9 @@
                                                 <tr>
                                                     <th scope="row">{{$services->firstItem()+$loop->index}}</th>
                                                     <td>{{$row->service_name}}</td>
-                                                    <td>{{$row->service_image}}</td>
+                                                    <td>
+                                                        <img src="{{asset($row->service_image)}}" atl="" hight="100px" width="100px"/>
+                                                    </td>
                                                     @if($row->created_at==null)
                                                         <td>no created at</td>
                                                     @else

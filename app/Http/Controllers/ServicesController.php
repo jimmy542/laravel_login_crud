@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Services;
+use Carbon\Carbon;
 
 class ServicesController extends Controller
 {
@@ -31,15 +32,24 @@ class ServicesController extends Controller
 
         $img_ext = strtolower($service_image->getClientOriginalExtension());
         $img_name = $name_gen.'.'.$img_ext;
-        $service = new Services;
-        $service->service_name = $request->service_name;
-        $service->service_image = $img_name;
-        $service->save();
-
         $upload_location = 'image/services/';
 
         $fullpath = $upload_location.$img_name;
+        
+
+
+        // $service = new Services;
+        // $service->service_name = $request->service_name;
+        // $service->service_image = $img_name;
+        // $service->save();
+        ;
+        Services::insert([
+            'service_name'=>$request->service_name,
+            'service_image'=>$fullpath,
+            'created_at'=>Carbon::now(),
+            
+        ]);
         $service_image->move($upload_location,$img_name);
-        // return redirect()->back()->with('success','save data okay');
+        return redirect()->back()->with('success','save service data');
     }
 }
