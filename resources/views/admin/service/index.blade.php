@@ -23,34 +23,35 @@
                                                 <th scope="col">No</th>
                                                 <th scope="col">Service Name</th>
                                                 <th scope="col">Service Image<th>
-                                                <th scope="col">Created</th>
-                                                <th scope="col">Edit</th>
-                                                <th scope="col">Delete</th>
+                                                <th scope="col"> Created </th>
+                                                <th scope="col"> Edit </th>
+                                                <th scope="col"> Delete </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 
                                                 @foreach($services as $row)
-                                                
                                                 <tr>
                                                     <th scope="row">{{$services->firstItem()+$loop->index}}</th>
                                                     <td>{{$row->service_name}}</td>
                                                     <td>
                                                         <img src="{{asset($row->service_image)}}" atl="" hight="100px" width="100px"/>
                                                     </td>
+                                                    <td>
                                                     @if($row->created_at==null)
-                                                        <td>no created at</td>
+                                                        no created at
                                                     @else
-                                                        <td>{{Carbon\Carbon::parse($row->created_at)->diffforHumans()}}</td>
+                                                       <td> {{Carbon\Carbon::parse($row->created_at)->diffforHumans()}} </td>
                                                     @endif
+                                                    </td>
                                                     <td >
                                                         <x-jet-button class="ml-4">
-                                                            <a href="{{url('/department/edit/'.$row->id)}}">Edit</a>
+                                                            <a href="{{url('/service/edit/'.$row->id)}}">Edit</a>
                                                         </x-jet-button>
                                                     </td>
                                                     <td >
                                                         <x-jet-button class="ml-4">
-                                                            <a href="{{url('/department/softdelete/'.$row->id)}}">Delete</a>
+                                                            <a href="{{url('/service/softdelete/'.$row->id)}}">Delete</a>
                                                         </x-jet-button>
                                                     </td>
                                                 </tr>
